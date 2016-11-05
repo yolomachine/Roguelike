@@ -32,6 +32,7 @@ void Game::begin() {
 		case LOSE: lose(); break;
 		default: break;
 	}
+	askRestart();
 	if ((key = getch()) == 'r') {
 		end();
 		init();
@@ -57,8 +58,8 @@ void Game::moveMonsters() {
 			p->move(p->x() + p->dir_x, p->y() + p->dir_y);
 			continue;
 		}
-		if (abs(map.actors[i]->x() - player->x()) > 5 || 
-			abs(map.actors[i]->y() - player->y()) > 5 ||
+		if (abs(map.actors[i]->x() - player->x()) > 20 || 
+			abs(map.actors[i]->y() - player->y()) > 20 ||
 			rand() % 10 > 6) 
 			continue;
 		if (abs(map.actors[i]->x() - player->x()) > abs(map.actors[i]->y() - player->y())) {
@@ -98,4 +99,9 @@ void Game::win() {
 void Game::lose() {
 	clear();
 	mvprintw(map.height / 2, map.width / 2 - 5, "Have you ever become a zombie?");
+}
+
+void Game::askRestart() {
+	mvprintw(2 + map.height / 2, map.width / 2, "Press R to restart");
+	mvprintw(3 + map.height / 2, map.width / 2 - 2, "Press anything to quit");
 }

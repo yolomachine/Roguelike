@@ -62,5 +62,3 @@ const char HEALING_POTION_SYMBOL = '&';
 //States
 #define WIN 1
 #define LOSE 2
-
-const std::string messages[] = { "Is there really a princess", "Have you ever become a zombie?" };

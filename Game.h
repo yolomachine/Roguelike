@@ -18,6 +18,7 @@ public:
 	void setLose() { state = LOSE; };
 	void win();
 	void lose();
+	void askRestart();
 
 	Map map;
 	Actor* player;

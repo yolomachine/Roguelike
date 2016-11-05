@@ -107,7 +107,7 @@ void Actor::move(int x, int y) {
 	switch (this->collision(*other)) {
 		case FREESPACE: map->swap(this, other); break;
 		case ENEMY: this->attack(static_cast<Actor&>(*other)); if (this->type == Type::PROJECTILE) map->removeObject(this->x(), this->y()); break;
-		case PICKUP: this->use(other); map->swap(this, other); break;
+		case PICKUP: this->use(other); map->swap(this, map->getObject(x, y)); break;
 		case ENDGAME: map->removeObject(this->x(), this->y()); game->setWin();
 		default: if (this->type == Type::PROJECTILE) map->removeObject(this->x(), this->y()); break;
 	}
